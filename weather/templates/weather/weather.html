@@ -6,12 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <p>aavedjnvioanvonrow</p>
-    <p>{{ weathers }}</p>
-    <p>{{ date }}</p>
-    <p>{{ telop }}</p>
-    <p>{{ image.city }}</p>
-    <img src="{{ image.url }}" alt="" style="width: 100px;height: auto;">
-    <a href="{% url 'weather:index' %}">戻る</a>
+    <div style="max-width: 800px;margin: 0 auto;">
+        <h1>weather information</h1>
+        <h2>{{ city }} : {{ weather.date }}の天気</h2>
+        <img src="{{ image.url }}" alt="" style="width: 200px;height: auto;">
+        <h3>{{ image.tag }}</h3>
+        <p>最高気温:{{ weather.temperature.max }}</p>
+        <p>最低気温:{{ weather.temperature.min }}</p>
+        <p>{{ weathers }}</p>
+        <p>{{ date }}</p>
+        <p>{{ image.city }}</p>
+        <a href="{% url 'weather:index' %}">戻る</a>
+    </div>
 </body>
 </html>

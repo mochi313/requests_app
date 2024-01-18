@@ -76,9 +76,16 @@ def wether(request):
         city = request.POST["address"]
     data = get_weather(city)["forecasts"][0]
     context = {
+        "weather":{
+            "date":data["date"],
+            "telop":data["telop"],
+            "temperature":{
+                "max":data["temperature"]["max"]["celsius"] or " --- ",
+                "min":data["temperature"]["min"]["celsius"] or " --- ",
+            },
+        },
         "weathers":data,
-        "date":data["date"],
-        "telop":data["telop"],
+        "city":city,
         "image":{
             "tag":data["image"]["title"],
             "url":data["image"]["url"],

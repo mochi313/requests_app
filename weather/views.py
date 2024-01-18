@@ -6,8 +6,7 @@ import json
 
 # Create your views here.
 def index(request):
-    # city = City.objects.all()
-    # form = CityForm()
+    city_data = request.get("")
     context = {
         "message":"Hello World",
         # "form":form,
@@ -81,8 +80,8 @@ def wether(request):
             "date":data["date"],
             "telop":data["telop"],
             "temperature":{
-                "max":data["temperature"]["max"]["celsius"] or " --- ",
-                "min":data["temperature"]["min"]["celsius"] or " --- ",
+                "max":data["temperature"]["max"]["celsius"] or "情報がありませんでした。",
+                "min":data["temperature"]["min"]["celsius"] or "情報がありませんでした。",
             },
         },
         "weathers":data,

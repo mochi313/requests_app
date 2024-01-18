@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends './base.html' %}
+{% block content%}
     <div style="max-width: 800px;margin: 0 auto;">
         <h1>weather information</h1>
         <h2>{{ city }} : {{ weather.date }}の天気</h2>
@@ -13,10 +7,7 @@
         <h3>{{ image.tag }}</h3>
         <p>最高気温:{{ weather.temperature.max }}</p>
         <p>最低気温:{{ weather.temperature.min }}</p>
-        <p>{{ weathers }}</p>
-        <p>{{ date }}</p>
-        <p>{{ image.city }}</p>
+        <!-- <p>{{ weathers }}</p> -->
         <a href="{% url 'weather:index' %}">戻る</a>
     </div>
-</body>
-</html>
+{% endblock %}

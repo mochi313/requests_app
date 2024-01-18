@@ -16,6 +16,7 @@ def index(request):
     return render(request,'weather/index.html',context)
 
 def get_weather(city):
+    # 一個前のweatherAPIの時に使ったやつの流用
     cities = {
         "北海道":"016010",
         "青森県":"020010",

@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends './base.html' %}
+{% block content%}
     <p>{{ message }}</p>
     <p>{{ city }}</p>
     <form method="POST" action="{% url 'weather:weather' %}">
@@ -24,6 +18,4 @@
     <div>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/hvrmkMgjVho?si=ySOC-wVLlhdl6PCj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-    <!-- <a href="{% url 'weather:weather' %}">天気</a> -->
-</body>
-</html>
+{% endblock %}

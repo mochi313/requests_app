@@ -73,7 +73,9 @@ def get_weather(city):
 def wether(request):
     if request.method == "POST":
         city = request.POST["address"]
-    data = get_weather(city)["forecasts"][0]
+    if request.method == "POST":
+        date = request.POST["date"]
+    data = get_weather(city)["forecasts"][int(date)]
     context = {
         "weather":{
             "date":data["date"],
@@ -90,4 +92,4 @@ def wether(request):
             "url":data["image"]["url"],
         },
     }
-    return render(request,'weather/weather.html',context)
+    return render(request,'weather/index.html',context)

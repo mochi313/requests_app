@@ -1,21 +1,44 @@
-{% extends './base.html' %}
-{% block content%}
-    <p>{{ message }}</p>
-    <p>{{ city }}</p>
-    <form method="POST" action="{% url 'weather:weather' %}">
-        {% csrf_token %}
-        <select name="address" id="address">
-            <option value="大阪府">大阪府</option>
-            <option value="奈良県">奈良県</option>
-            <option value="三重県">三重県</option>
-            <option value="滋賀県">滋賀県</option>
-            <option value="和歌山県">和歌山県</option>
-            <option value="兵庫県">兵庫県</option>
-            <option value="京都府">京都府</option>
-        </select>
-        <button type="submit">SUBMIT</button>
-    </form>
-    <div style="text-align: center;border: thick #ededed double;margin-top: 16px;width: auto;padding: 32px;background-color: cadetblue;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/hvrmkMgjVho?si=ySOC-wVLlhdl6PCj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-{% endblock %}
+<!DOCTYPE html>
+    <html lang="ja">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body style="max-width: 800px;margin: 0 auto;">
+            <main>
+                <h1>Weather information</h1>
+            {% if weather %}
+                <h2>{{ city }} : {{ weather.date }}の天気</h2>
+                <img src="{{ image.url }}" alt="" style="width: 200px;height: auto;">
+                <h3>{{ image.tag }}</h3>
+                <p>最高気温: {{ weather.temperature.max }}</p>
+                <p>最低気温: {{ weather.temperature.min }}</p>
+                <a href="{% url 'weather:index' %}">戻る</a>
+            {% else %}
+            <h2>今日の天気を知りたい場所を選択してください</h2>
+            <form method="POST" action="{% url 'weather:weather' %}">
+                {% csrf_token %}
+                <select name="address" id="address">
+                    <option value="大阪府">大阪府</option>
+                    <option value="奈良県">奈良県</option>
+                    <option value="三重県">三重県</option>
+                    <option value="滋賀県">滋賀県</option>
+                    <option value="和歌山県">和歌山県</option>
+                    <option value="兵庫県">兵庫県</option>
+                    <option value="京都府">京都府</option>
+                </select>
+                <select name="date" id="">
+                    <option value="0">今日</option>
+                    <option value="1">明日</option>
+                    <option value="2">明後日</option>
+                </select>
+                <button type="submit">SUBMIT</button>
+            </form>
+            <div style="text-align: center;border: thick #ededed double;margin-top: 16px;width: auto;padding: 32px;background-color: cadetblue;">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/hvrmkMgjVho?si=ySOC-wVLlhdl6PCj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            {% endif %}
+        </main>
+    </body>
+</html>

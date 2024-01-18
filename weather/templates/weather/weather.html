@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>{{ city.city }}</p>
+    <p>{{ weathers }}</p>
+    <p>{{ date }}</p>
+    <p>{{ telop }}</p>
+    <p>{{ city }}</p>
+    <img src="{{ image.url }}" alt="" style="width: 100px;height: auto;">
+    <a href="{% url 'weather:index' %}">戻る</a>
+</body>
+</html>

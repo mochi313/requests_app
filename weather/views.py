@@ -6,7 +6,6 @@ import json
 
 # Create your views here.
 def index(request):
-    city_data = request.get("")
     context = {
         "message":"Hello World",
         # "form":form,

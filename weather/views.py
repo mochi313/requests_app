@@ -70,7 +70,7 @@ def get_weather(city):
     data = response.json()
     return data
 
-def wether(request):
+def weather(request):
     if request.method == "POST":
         city = request.POST["address"]
     if request.method == "POST":
